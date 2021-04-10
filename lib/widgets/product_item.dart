@@ -33,12 +33,34 @@ class ProuctItem extends StatelessWidget {
         ),
         footer: Container(
           color: Colors.black54,
-          child: Text(
-            product.title,
-            maxLines: 2,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    product.title,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    "₹ " + product.price.toString(),
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
