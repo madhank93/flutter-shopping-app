@@ -8,32 +8,38 @@ class ProuctItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridTile(
-      child: Image.network(
-        product.imageUrl,
-        fit: BoxFit.cover,
-      ),
-      header: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Icon(
-            Icons.favorite_border_outlined,
-            color: Colors.red,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: GridTile(
+        child: Image.network(
+          product.imageUrl,
+          fit: BoxFit.cover,
+        ),
+        header: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Icon(
+                Icons.favorite_border_outlined,
+                color: Colors.red,
+              ),
+              const Icon(
+                Icons.shopping_cart_outlined,
+                color: Colors.black,
+              ),
+            ],
           ),
-          const Icon(
-            Icons.shopping_cart_outlined,
-            color: Colors.black,
-          ),
-        ],
-      ),
-      footer: Container(
-        color: Colors.black54,
-        child: Text(
-          product.title,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
+        ),
+        footer: Container(
+          color: Colors.black54,
+          child: Text(
+            product.title,
+            maxLines: 2,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+            ),
           ),
         ),
       ),
