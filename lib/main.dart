@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.red,
         accentColor: Colors.grey[350],
       ),
-      home: ProductOverviewScreen(),
+      initialRoute: ProductOverviewScreen.routeID,
+      routes: {
+        ProductOverviewScreen.routeID: (ctx) => ProductOverviewScreen(),
+      },
     );
   }
 }
