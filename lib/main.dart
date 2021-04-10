@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import './screens/product_details_screen.dart';
 import './screens/product_overview_screen.dart';
 
 void main() {
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: ProductOverviewScreen.routeID,
       routes: {
         ProductOverviewScreen.routeID: (ctx) => ProductOverviewScreen(),
+        ProductDetailsScreen.routeID: (ctx) => ProductDetailsScreen()
       },
     );
   }
