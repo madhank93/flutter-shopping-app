@@ -24,12 +24,11 @@ class ProductOverviewScreen extends StatelessWidget {
 class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    List<Product> loadedProduct =
-        Provider.of<ProductsProvider>(context).products;
+    List<Product> products = Provider.of<ProductsProvider>(context).products;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView.builder(
-        itemCount: loadedProduct.length,
+        itemCount: products.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,
@@ -37,7 +36,7 @@ class ProductGrid extends StatelessWidget {
           mainAxisSpacing: 10,
         ),
         itemBuilder: (ctx, index) {
-          return ProuctItem(loadedProduct[index]);
+          return ProuctItem(products[index]);
         },
       ),
     );
