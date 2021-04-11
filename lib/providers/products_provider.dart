@@ -47,4 +47,9 @@ class ProductsProvider with ChangeNotifier {
   Product findByID(String id) {
     return _products.firstWhere((element) => element.id == id);
   }
+
+  void toogleFavourite(String id) {
+    findByID(id).isFavourite = !findByID(id).isFavourite;
+    notifyListeners();
+  }
 }

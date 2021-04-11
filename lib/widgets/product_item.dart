@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_app/models/product.dart';
+import 'package:shopping_app/providers/products_provider.dart';
 import 'package:shopping_app/screens/product_details_screen.dart';
 
 class ProuctItem extends StatelessWidget {
@@ -28,9 +30,17 @@ class ProuctItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.favorite_border_outlined,
-                  color: Colors.red,
+                IconButton(
+                  onPressed: () {
+                    Provider.of<ProductsProvider>(context, listen: false)
+                        .toogleFavourite(product.id);
+                  },
+                  icon: Icon(
+                    product.isFavourite
+                        ? Icons.favorite
+                        : Icons.favorite_border_outlined,
+                    color: Colors.red,
+                  ),
                 ),
                 const Icon(
                   Icons.shopping_cart_outlined,
