@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import '../models/product.dart';
+import 'product_provider.dart';
 
 class ProductsProvider with ChangeNotifier {
   List<Product> _products = [
@@ -46,10 +46,5 @@ class ProductsProvider with ChangeNotifier {
 
   Product findByID(String id) {
     return _products.firstWhere((element) => element.id == id);
-  }
-
-  void toogleFavourite(String id) {
-    findByID(id).isFavourite = !findByID(id).isFavourite;
-    notifyListeners();
   }
 }

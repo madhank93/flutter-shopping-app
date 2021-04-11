@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shopping_app/models/product.dart';
-import 'package:shopping_app/providers/products_provider.dart';
+import 'package:shopping_app/providers/product_provider.dart';
 import 'package:shopping_app/screens/product_details_screen.dart';
 
-class ProuctItem extends StatelessWidget {
-  final Product product;
-
-  const ProuctItem(this.product);
-
+class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final product = Provider.of<Product>(
+      context,
+      listen: false,
+    );
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
       child: GestureDetector(
@@ -30,16 +30,18 @@ class ProuctItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                IconButton(
-                  onPressed: () {
-                    Provider.of<ProductsProvider>(context, listen: false)
-                        .toogleFavourite(product.id);
-                  },
-                  icon: Icon(
-                    product.isFavourite
-                        ? Icons.favorite
-                        : Icons.favorite_border_outlined,
-                    color: Colors.red,
+                Consumer<Product>(
+                  builder: (ctx, product, child) => IconButton(
+                    onPressed: () {
+                      Provider.of<Product>(context, listen: false)
+                          .toogleFavourite();
+                    },
+                    icon: Icon(
+                      product.isFavourite
+                          ? Icons.favorite
+                          : Icons.favorite_border_outlined,
+                      color: Colors.red,
+                    ),
                   ),
                 ),
                 const Icon(

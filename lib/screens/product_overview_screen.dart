@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shopping_app/providers/products_provider.dart';
 
 import '../widgets/product_item.dart';
-import '../models/product.dart';
+import '../providers/product_provider.dart';
 
 class ProductOverviewScreen extends StatelessWidget {
   static final String routeID = "product_overview_screen";
@@ -36,7 +36,10 @@ class ProductGrid extends StatelessWidget {
           mainAxisSpacing: 10,
         ),
         itemBuilder: (ctx, index) {
-          return ProuctItem(products[index]);
+          return ChangeNotifierProvider.value(
+            value: products[index],
+            child: ProductItem(),
+          );
         },
       ),
     );
