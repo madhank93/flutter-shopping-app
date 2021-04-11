@@ -13,7 +13,10 @@ class ProuctItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(15),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushNamed(ProductDetailsScreen.routeID);
+          Navigator.of(context).pushNamed(
+            ProductDetailsScreen.routeID,
+            arguments: product.id,
+          );
         },
         child: GridTile(
           child: Image.network(
