@@ -44,6 +44,11 @@ class ProductsProvider with ChangeNotifier {
     return UnmodifiableListView(_products);
   }
 
+  UnmodifiableListView<Product> get showOnlyFavourites {
+    return UnmodifiableListView(
+        _products.where((element) => element.isFavourite).toList());
+  }
+
   Product findByID(String id) {
     return _products.firstWhere((element) => element.id == id);
   }
