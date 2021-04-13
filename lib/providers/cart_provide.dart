@@ -1,12 +1,12 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
-import 'package:shopping_app/models/cart_item.dart';
+import 'package:shopping_app/models/cart.dart';
 
 class CartProvider with ChangeNotifier {
-  late Map<String, CartItem> _cartItems = {};
+  late Map<String, Cart> _cartItems = {};
 
-  UnmodifiableMapView<String, CartItem> get cartItems {
+  UnmodifiableMapView<String, Cart> get cartItems {
     return UnmodifiableMapView(_cartItems);
   }
 
@@ -26,13 +26,12 @@ class CartProvider with ChangeNotifier {
     if (_cartItems.containsKey(productId)) {
       _cartItems.update(
         productId,
-        (value) =>
-            CartItem(value.id, value.title, value.price, value.quantity + 1),
+        (value) => Cart(value.id, value.title, value.price, value.quantity + 1),
       );
     } else {
       _cartItems.putIfAbsent(
         productId,
-        () => CartItem(DateTime.now().toString(), title, price, 1),
+        () => Cart(DateTime.now().toString(), title, price, 1),
       );
     }
     notifyListeners();
