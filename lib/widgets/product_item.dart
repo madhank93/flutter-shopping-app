@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_app/providers/cart_provide.dart';
 import 'package:shopping_app/providers/product_provider.dart';
 import 'package:shopping_app/screens/product_details_screen.dart';
 
@@ -10,6 +11,8 @@ class ProductItem extends StatelessWidget {
       context,
       listen: false,
     );
+
+    final cart = Provider.of<CartProvider>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(15),
@@ -44,8 +47,11 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Icon(
-                  Icons.shopping_cart_outlined,
+                IconButton(
+                  onPressed: () {
+                    cart.addItem(product.id, product.price, product.title);
+                  },
+                  icon: Icon(Icons.shopping_cart_outlined),
                   color: Colors.black,
                 ),
               ],
