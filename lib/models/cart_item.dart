@@ -2,7 +2,7 @@ class CartItem {
   final String id;
   final String title;
   final double price;
-  final int qunatity;
+  final int quantity;
 
-  CartItem(this.id, this.title, this.price, this.qunatity);
+  CartItem(this.id, this.title, this.price, this.quantity);
 }
