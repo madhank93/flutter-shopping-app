@@ -34,25 +34,43 @@ class ProductItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Consumer<Product>(
-                  builder: (ctx, product, child) => IconButton(
-                    onPressed: () {
-                      Provider.of<Product>(context, listen: false)
-                          .toogleFavourite();
-                    },
-                    icon: Icon(
-                      product.isFavourite
-                          ? Icons.favorite
-                          : Icons.favorite_border_outlined,
-                      color: Colors.red,
+                  builder: (ctx, product, child) => Container(
+                    padding: EdgeInsets.zero,
+                    margin: EdgeInsets.zero,
+                    decoration: new BoxDecoration(
+                      color: Colors.white,
+                      shape: BoxShape.circle,
+                    ),
+                    child: IconButton(
+                      onPressed: () {
+                        Provider.of<Product>(context, listen: false)
+                            .toogleFavourite();
+                      },
+                      icon: Icon(
+                        product.isFavourite
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        size: 25,
+                        color: Colors.red,
+                      ),
                     ),
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    cart.addItem(product.id, product.price, product.title);
-                  },
-                  icon: Icon(Icons.shopping_cart_outlined),
-                  color: Colors.black,
+                Container(
+                  decoration: new BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      cart.addItem(product.id, product.price, product.title);
+                    },
+                    icon: Icon(
+                      Icons.shopping_cart_outlined,
+                      size: 25,
+                    ),
+                    color: Colors.black,
+                  ),
                 ),
               ],
             ),
