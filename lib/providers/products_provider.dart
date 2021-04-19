@@ -52,4 +52,31 @@ class ProductsProvider with ChangeNotifier {
   Product findByID(String id) {
     return _products.firstWhere((element) => element.id == id);
   }
+
+  void addProduct(Product product) {
+    final newProduct = Product(
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      id: DateTime.now().toString(),
+    );
+    _products.add(newProduct);
+    notifyListeners();
+  }
+
+  void updateProduct(String id, Product newProduct) {
+    final prodIndex = _products.indexWhere((prod) => prod.id == id);
+    if (prodIndex >= 0) {
+      _products[prodIndex] = newProduct;
+      notifyListeners();
+    } else {
+      print('No product id found to update');
+    }
+  }
+
+  void deleteProduct(String id) {
+    _products.removeWhere((prod) => prod.id == id);
+    notifyListeners();
+  }
 }
